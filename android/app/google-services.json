@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "451676509968",
+    "project_id": "usedcarapp-2fef6",
+    "storage_bucket": "usedcarapp-2fef6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451676509968:android:91bc4cf65408f8ea6ab795",
+        "android_client_info": {
+          "package_name": "com.usedcar.usedcarapp.used_car_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0tiuwXgoZwdE7cTrCSsdfzsFAUTKkUNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
