@@ -14,7 +14,7 @@ class CutomButtonContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(left: 12,right: 12,top: 5,bottom: 5),
-      height: 36,
+      height: 40,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white38),
           borderRadius: BorderRadius.circular(10),

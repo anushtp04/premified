@@ -1,13 +1,15 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:used_car_app/application/core/widgets/text_style.dart';
-import 'package:used_car_app/data/model/usedcar_model.dart';
+import 'package:used_car_app/data/model/model_class.dart';
+import 'package:used_car_app/presentation/details_page/widgets/customButton.dart';
+import 'package:used_car_app/presentation/details_page/widgets/detailsCarousel.dart';
 
-import '../../core/services/theme_services.dart';
-import '../../core/widgets/customButton.dart';
+import '../../application/core/services/theme_services.dart';
+import '../widgets/text_style.dart';
 
 class UsedCarDetailPage extends StatelessWidget {
-  final UsedCarModel carmodel;
+  final CarModel carmodel;
 
   UsedCarDetailPage({super.key, required this.carmodel});
 
@@ -38,7 +40,7 @@ class UsedCarDetailPage extends StatelessWidget {
           title: AppText(
             text: carmodel.name!,
             size: 18,
-            color: darkMode ? Colors.white : Colors.black,
+
           ),
           centerTitle: true,
         ),
@@ -46,30 +48,23 @@ class UsedCarDetailPage extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           child: Stack(children: [
-            Container(
-              padding: const EdgeInsets.all(10),
-              height: 250,
-              decoration: BoxDecoration(
-                  image: DecorationImage(image: NetworkImage(carmodel.image!))),
-              child: Center(
-                child: carmodel.sold == true
-                    ? Container(
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: const Text(
-                          "SOLD",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18
-                          ),
-                        ),
-                      )
-                    : const SizedBox(),
+            CarouselSlider(
+              options: CarouselOptions(
+
+                height: 250,
+                autoPlay: true,
+                viewportFraction: 1,
+                enlargeCenterPage: true,
+                enableInfiniteScroll: true,
+                autoPlayAnimationDuration: Duration(milliseconds: 10)
               ),
+              items: [
+                DetailsCarouselWidget(carmodel: carmodel, image: '${carmodel.front}',),
+                DetailsCarouselWidget(carmodel: carmodel, image: '${carmodel.side1}',),
+                DetailsCarouselWidget(carmodel: carmodel, image: '${carmodel.side2}',),
+                DetailsCarouselWidget(carmodel: carmodel, image: '${carmodel.back}',),
+                DetailsCarouselWidget(carmodel: carmodel, image: '${carmodel.inside}',),
+              ]
             ),
             Container(
               padding: const EdgeInsets.only(
@@ -94,10 +89,9 @@ class UsedCarDetailPage extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  AppText(
+                 carmodel.sold==true? AppText(text: "SOLD",color: Colors.red,size: 25,) : AppText(
                     text: "₹ ${carmodel.price!}",
                     size: 25,
-                    color: darkMode ? Colors.white : Colors.black,
                   ),
                   const SizedBox(
                     height: 30,
@@ -202,3 +196,4 @@ class UsedCarDetailPage extends StatelessWidget {
     }
   }
 }
+
