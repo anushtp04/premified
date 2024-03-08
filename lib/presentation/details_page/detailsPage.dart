@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:used_car_app/domain/model/usedcar_model.dart';
 import 'package:used_car_app/presentation/details_page/widgets/customButton.dart';
 import 'package:used_car_app/presentation/details_page/widgets/detailsCarousel.dart';

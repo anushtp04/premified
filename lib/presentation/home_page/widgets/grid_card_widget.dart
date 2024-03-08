@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:used_car_app/core/base_font_size.dart';
 import 'package:used_car_app/core/sizes.dart';
 import 'package:used_car_app/domain/model/usedcar_model.dart';
 import 'package:used_car_app/presentation/widgets/text_style.dart';

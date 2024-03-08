@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:used_car_app/domain/model/usedcar_model.dart';
 import '../../../core/sizes.dart';
 import '../../widgets/text_style.dart';

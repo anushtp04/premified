@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
 import 'package:used_car_app/presentation/settings_page/widgets/rawWidget.dart';
 import 'package:used_car_app/presentation/settings_page/widgets/smallButtons.dart';
 import '../widgets/text_style.dart';

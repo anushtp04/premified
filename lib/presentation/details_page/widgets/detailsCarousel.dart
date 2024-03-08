@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:used_car_app/domain/model/usedcar_model.dart';
 
 
