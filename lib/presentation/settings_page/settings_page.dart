@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:used_car_app/presentation/settings_page/widgets/rawWidget.dart';
 import 'package:used_car_app/presentation/settings_page/widgets/smallButtons.dart';
-import '../../application/core/services/theme_services.dart';
 import '../widgets/text_style.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -12,7 +11,6 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final darkMode = Provider.of<ThemeServiceProvider>(context).isDarkModeOn;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
@@ -80,13 +78,9 @@ class SettingsPage extends StatelessWidget {
                           onTapFunction: () {}),
                       SmallButtons(
 
-                        icon: darkMode ? Icons.dark_mode : Icons.sunny,
-                        text: darkMode ? "Dark Mode" : "Light Mode",
-                        onTapFunction: () { Provider.of<ThemeServiceProvider>(
-                                context,
-                                listen: false)
-                            .toggleTheme();},
-                        color: darkMode?Colors.blue: Colors.amber,
+                        icon: Icons.sunny,
+                        text: "Light Mode",
+                        onTapFunction: () {}
                       ),
                     ],
                   ),

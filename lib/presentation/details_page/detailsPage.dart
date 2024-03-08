@@ -1,15 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:used_car_app/data/model/model_class.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:used_car_app/domain/model/usedcar_model.dart';
 import 'package:used_car_app/presentation/details_page/widgets/customButton.dart';
 import 'package:used_car_app/presentation/details_page/widgets/detailsCarousel.dart';
-
-import '../../application/core/services/theme_services.dart';
 import '../widgets/text_style.dart';
 
 class UsedCarDetailPage extends StatelessWidget {
-  final CarModel carmodel;
+  final UsedCarModel carmodel;
 
   UsedCarDetailPage({super.key, required this.carmodel});
 
@@ -25,22 +23,19 @@ class UsedCarDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final darkMode = Provider.of<ThemeServiceProvider>(context).isDarkModeOn;
-
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_ios_new,
-              color: darkMode ? Colors.white : Colors.black,
               size: 18,
+              color: Colors.black,
             ),
             onPressed: () => Navigator.pop(context),
           ),
           title: AppText(
-            text: carmodel.name!,
+            text: carmodel.name,
             size: 18,
-
           ),
           centerTitle: true,
         ),
@@ -49,23 +44,30 @@ class UsedCarDetailPage extends StatelessWidget {
           width: double.infinity,
           child: Stack(children: [
             CarouselSlider(
-              options: CarouselOptions(
-
-                height: 250,
-                autoPlay: true,
-                viewportFraction: 1,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: true,
-                autoPlayAnimationDuration: Duration(milliseconds: 10)
-              ),
-              items: [
-                DetailsCarouselWidget(carmodel: carmodel, image: '${carmodel.front}',),
-                DetailsCarouselWidget(carmodel: carmodel, image: '${carmodel.side1}',),
-                DetailsCarouselWidget(carmodel: carmodel, image: '${carmodel.side2}',),
-                DetailsCarouselWidget(carmodel: carmodel, image: '${carmodel.back}',),
-                DetailsCarouselWidget(carmodel: carmodel, image: '${carmodel.inside}',),
-              ]
-            ),
+                options: CarouselOptions(
+                    height: 250,
+                    autoPlay: true,
+                    viewportFraction: 1,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: true,
+                    autoPlayAnimationDuration:
+                    Duration(milliseconds: 10)),
+                items: [
+                  DetailsCarouselWidget(
+                    carmodel: carmodel,
+                    image: carmodel.front,
+                  ),
+                  DetailsCarouselWidget(
+                      carmodel: carmodel, image: carmodel.side1),
+                  DetailsCarouselWidget(
+                      carmodel: carmodel, image: carmodel.side2),
+                  DetailsCarouselWidget(
+                      carmodel: carmodel, image: carmodel.back),
+                  DetailsCarouselWidget(
+                    carmodel: carmodel,
+                    image: carmodel.inside,
+                  ),
+                ]),
             Container(
               padding: const EdgeInsets.only(
                   left: 20, right: 20, top: 10, bottom: 10),
@@ -73,7 +75,7 @@ class UsedCarDetailPage extends StatelessWidget {
               height: double.infinity,
               width: double.infinity,
               decoration: BoxDecoration(
-                  color: darkMode ? Colors.black : Colors.white,
+                  color: Colors.white,
                   borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(30),
                       topLeft: Radius.circular(30))),
@@ -84,13 +86,19 @@ class UsedCarDetailPage extends StatelessWidget {
                   Container(
                     height: 2,
                     width: 50,
-                    color: darkMode ? Colors.white : Colors.black26,
+                    color: Colors.black26,
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                 carmodel.sold==true? AppText(text: "SOLD",color: Colors.red,size: 25,) : AppText(
-                    text: "₹ ${carmodel.price!}",
+                  carmodel.sold == true
+                      ? AppText(
+                    text: "SOLD",
+                    color: Colors.red,
+                    size: 25,
+                  )
+                      : AppText(
+                    text: "₹ ${carmodel.price}",
                     size: 25,
                   ),
                   const SizedBox(
@@ -104,20 +112,20 @@ class UsedCarDetailPage extends StatelessWidget {
                           height: 50,
                           width: double.infinity,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(detailsList[index],
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600,
-                                      color: darkMode
-                                          ? Colors.white54
-                                          : Colors.black45)),
+                                      color: Colors.black45)),
                               Text(
                                 getDetailsBasedOnIndex(index),
                                 style: const TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.w600),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600),
                               )
                             ],
                           ),
@@ -128,19 +136,27 @@ class UsedCarDetailPage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  carmodel.sold == true ? Container(
-                    padding: const EdgeInsets.only(left: 20,right: 20),
+                  carmodel.sold == true
+                      ? Container(
+                    padding:
+                    const EdgeInsets.only(left: 20, right: 20),
                     height: 36,
                     width: double.infinity,
                     decoration: BoxDecoration(
                         color: Colors.red,
-                        borderRadius: BorderRadius.circular(10)
-                    ),
+                        borderRadius: BorderRadius.circular(10)),
                     child: const Center(
-                      child: Text("Enqiury For Same Model",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
+                      child: Text(
+                        "Enqiury For Same Model",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ),
-                  ) : const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  )
+                      : const Row(
+                    mainAxisAlignment:
+                    MainAxisAlignment.spaceAround,
                     children: [
                       CutomButtonContainer(
                         icon: Icons.messenger,
@@ -162,14 +178,19 @@ class UsedCarDetailPage extends StatelessWidget {
                 ],
               ),
             ),
-             Positioned(
+            Positioned(
                 top: 210,
                 right: 30,
-                child: carmodel.sold == true ? const SizedBox() : const CircleAvatar(
+                child: carmodel.sold == true
+                    ? const SizedBox()
+                    : CircleAvatar(
                   backgroundColor: Colors.blue,
-                  child: Icon(
-                    Icons.favorite,
-                    color: Colors.red,
+                  child: IconButton(
+                    icon: Icon(Icons.favorite),
+                    color: carmodel.isFavourite
+                        ? Colors.red
+                        : Colors.grey,
+                    onPressed: () {},
                   ),
                 ))
           ]),
@@ -178,22 +199,21 @@ class UsedCarDetailPage extends StatelessWidget {
 
   String getDetailsBasedOnIndex(int index) {
     if (index == 0) {
-      return carmodel.brand!;
+      return carmodel.brand;
     } else if (index == 1) {
-      return "${carmodel.year!}";
+      return carmodel.year;
     } else if (index == 2) {
-      return "${carmodel.kilometers!}";
+      return carmodel.kilometers;
     } else if (index == 3) {
-      return carmodel.state!;
+      return carmodel.state;
     } else if (index == 4) {
-      return carmodel.color!;
+      return carmodel.color;
     } else if (index == 5) {
-      return "${carmodel.ownership!}";
+      return carmodel.ownership;
     } else if (index == 6) {
-      return carmodel.fuel!;
+      return carmodel.fuel;
     } else {
       return 'Invalid number';
     }
   }
 }
-

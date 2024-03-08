@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../application/core/services/theme_services.dart';
 import '../../widgets/text_style.dart';
 
 class SmallButtons extends StatelessWidget {
@@ -16,7 +15,6 @@ class SmallButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final darkMode = Provider.of<ThemeServiceProvider>(context).isDarkModeOn;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,7 +27,7 @@ class SmallButtons extends StatelessWidget {
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.white38),
                 borderRadius: BorderRadius.circular(10),
-                color: darkMode?Colors.black: Colors.white
+                color: Colors.white
             ),
             child: Icon(icon,size: 20,color: color,),
           ),
