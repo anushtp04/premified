@@ -12,7 +12,6 @@ import 'package:used_car_app/presentation/widgets/text_style.dart';
 import '../details_page/detailsPage.dart';
 import '../main_page/widgets/appBar.dart';
 
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -20,12 +19,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
 
-
     return Scaffold(
         appBar: const AppBarWidget(),
         body: BlocBuilder<GetUsedCarBloc, GetUsedCarState>(
             builder: (context, state) {
-          if (state is GetUsedCarLoaded) {
+          if (state is GetUsedCarLoading) {
+            return Center(
+              child: CircularProgressIndicator(color: Colors.blue.shade900,),
+            );
+          } else if (state is GetUsedCarLoaded) {
             final randomIndex1 = Random().nextInt(state.usedCars.length);
 
             int randomIndex2;
@@ -88,33 +90,20 @@ class HomePage extends StatelessWidget {
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
-                      // childAspectRatio: childAspectRatio,
                     ),
                     itemBuilder: (context, index) {
                       final usedcar = state.usedCars[index];
                       return GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => UsedCarDetailPage(
-                                  carmodel: usedcar,
-                                ),
-                              ));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => UsedCarDetailPage(carmodel: usedcar),));
                         },
-                        child: GridCardWidget(
-                            height: height,
-                            usedcar: usedcar),
+                        child:
+                            GridCardWidget(height: height, usedcar: usedcar),
                       );
                     },
                   ),
                 ),
               ]),
-            );
-          }
-          else if (state is GetUsedCarLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
             );
           } else {
             return Center(

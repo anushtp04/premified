@@ -1,7 +1,7 @@
-import '../entities/usedcar_entity.dart';
 
 class UsedCarModel {
   String name;
+  String id;
   String brand;
   String color;
   String price;
@@ -16,11 +16,62 @@ class UsedCarModel {
   String year;
   String state;
   String ownership;
+  String type;
+  String range;
   bool sold;
   bool isFavourite;
 
+  UsedCarModel copyWith({
+    String? name,
+    String? brand,
+    String? color,
+    String? id,
+    String? price,
+    String? image,
+    String? front,
+    String? back,
+    String? side1,
+    String? side2,
+    String? inside,
+    String? kilometers,
+    String? fuel,
+    String? year,
+    String? state,
+    String? type,
+    String? range,
+    String? ownership,
+    bool? sold,
+    bool? isFavourite,
+  }) {
+    return UsedCarModel(
+      name: name ?? this.name,
+      brand: brand ?? this.brand,
+      color: color ?? this.color,
+      id: id ?? this.id,
+      price: price ?? this.price,
+      fuel: fuel ?? this.fuel,
+      state: state ?? this.state,
+      image: image ?? this.image,
+      back: back ?? this.back,
+      front: front ?? this.front,
+      side1: side1 ?? this.side1,
+      side2: side2 ?? this.side2,
+      inside: inside ?? this.inside,
+      kilometers: kilometers ?? this.kilometers,
+      ownership: ownership ?? this.ownership,
+      type: type ?? this.type,
+      range: range ?? this.range,
+      year: year ?? this.year,
+      sold: sold ?? this.sold,
+      isFavourite: isFavourite ?? this.isFavourite,
+    );
+  }
+
+
+
   UsedCarModel({
     required this.name,
+    required this.id,
     required this.brand,
     required this.color,
     required this.price,
@@ -35,52 +86,58 @@ class UsedCarModel {
     required this.kilometers,
     required this.ownership,
     required this.year,
+    required this.type,
+    required this.range,
     required this.sold,
     required this.isFavourite,
   });
-
-  UsedCarEntity toEntity() {
-    return UsedCarEntity(
-      name:  name,
-      brand: brand,
-      color: color,
-      price: price,
-      image: image,
-      front: front,
-      back:  back,
-      side1: side1,
-      side2: side2,
-     inside: inside,
- kilometers: kilometers,
-      fuel:  fuel,
-      year:  year,
-      state: state,
-  ownership: ownership,
-      sold:  sold,
-      isFavourite:  isFavourite,
-    );
+  Map<String, Object?> toDocument() {
+    return {
+      "name": name,
+      "brand": brand,
+      "color": color,
+      "id": id,
+      "price": price,
+      "fuel": fuel,
+      "state": state,
+      "image": image,
+      "back": back,
+      "front": front,
+      "side1": side1,
+      "side2": side2,
+      "inside": inside,
+      "kilometers": kilometers,
+      "ownership": ownership,
+      "year": year,
+      "type": type,
+      "range": range,
+      "sold": sold,
+      "isFavourite": isFavourite,
+    };
   }
 
-  static UsedCarModel fromEntity(UsedCarEntity entity){
+  static UsedCarModel fromDocument(Map<String, dynamic> doc) {
     return UsedCarModel(
-      name:  entity.name,
-      brand: entity.brand,
-      color: entity.color,
-      price: entity.price,
-      image: entity.image,
-      front: entity.front,
-      back:  entity.back,
-      side1: entity.side1,
-      side2: entity.side2,
-      inside: entity.inside,
-      kilometers: entity.kilometers,
-      fuel:  entity.fuel,
-      year:  entity.year,
-      state: entity.state,
-      ownership: entity.ownership,
-      sold:  entity.sold,
-      isFavourite:  entity.isFavourite,
+      name: doc["name"],
+      brand: doc["brand"],
+      id: doc["id"],
+      color: doc["color"],
+      price: doc["price"],
+      fuel: doc["fuel"],
+      state: doc["state"],
+      image: doc["image"],
+      back: doc["back"],
+      front: doc["front"],
+      side1: doc["side1"],
+      side2: doc["side2"],
+      inside: doc["inside"],
+      kilometers: doc["kilometers"],
+      ownership: doc["ownership"],
+      year: doc["year"],
+      type: doc["type"],
+      range : doc["range"],
+      sold: doc["sold"],
+      isFavourite: doc["isFavourite"],
     );
   }
-
 }

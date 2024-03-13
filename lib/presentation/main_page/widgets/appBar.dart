@@ -11,9 +11,10 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       centerTitle: true,
       title: Text(
-        "PREMIUM MOTO",
+        "PREMIFIED USEDCARS",
         style: GoogleFonts.kdamThmorPro(textStyle:TextStyle(
-        fontSize: 25,
+        fontSize: 27,
+        letterSpacing: 1,
         fontWeight: FontWeight.bold,
         fontStyle: FontStyle.italic
           ),
@@ -24,6 +25,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
   @override
 
-  Size get preferredSize => Size.fromHeight(60);
+  Size get preferredSize => Size.fromHeight(50);
 }
 

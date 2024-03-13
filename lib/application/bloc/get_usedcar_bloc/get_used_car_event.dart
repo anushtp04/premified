@@ -9,3 +9,4 @@ abstract class GetUsedCarEvent extends Equatable {
 
 class GetUsedCar extends GetUsedCarEvent{}
 
+

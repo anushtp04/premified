@@ -20,6 +20,10 @@ class ScreenUtil {
   static double getFifteenSize(BuildContext context) =>screenWidth(context) * (15 / screenWidth(context));
   static double getSeventeenSize(BuildContext context) =>screenWidth(context) * (17 / screenWidth(context));
   static double getTwentySize(BuildContext context) =>screenWidth(context) * (20 / screenWidth(context));
+  static double getTwentyTwoSize(BuildContext context) =>screenWidth(context) * (22 / screenWidth(context));
+  static double getTwentyEightSize(BuildContext context) =>screenWidth(context) * (28 / screenWidth(context));
+  static double getForty(BuildContext context) =>screenWidth(context) * (40 / screenWidth(context));
+  static double getFifty(BuildContext context) =>screenWidth(context) * (50 / screenWidth(context));
   static double getSeventySize(BuildContext context) =>screenWidth(context) * (70 / screenWidth(context));
   static double getEightySize(BuildContext context) =>screenWidth(context) * (80 / screenWidth(context));
   static double getNintySize(BuildContext context) =>screenWidth(context) * (90 / screenWidth(context));

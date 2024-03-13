@@ -2,7 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:used_car_app/application/bloc/bottom_nav_bloc/bottom_nav_bloc.dart';
+import 'package:used_car_app/application/bloc/favourite_screen_bloc/favourite_screen_bloc.dart';
+import 'package:used_car_app/application/bloc/search_page_bloc/search_page_bloc.dart';
 import 'package:used_car_app/infrastructure/repository/firebase_repo.dart';
 import 'package:used_car_app/presentation/main_page/main_page.dart';
 import 'package:used_car_app/core/theme.dart';
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
       home: MultiBlocProvider(
         providers: [
           BlocProvider(create:(context) => GetUsedCarBloc(FirebaseRepo())..add(GetUsedCar())),
-          BlocProvider(create:(context) => BottomNavBloc()..add(TabChangedEvent(selectedIndex: 0))),
+          BlocProvider(create: (context) => FavouriteScreenBloc()..add(FavouriteLoadedEvent( ))),
+          BlocProvider(create: (context) => SearchPageBloc(FirebaseRepo())..add(SearchPageLoadedEvent( ))),
         ],
 
         child: MainPage(),
