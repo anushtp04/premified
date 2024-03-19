@@ -6,8 +6,10 @@ abstract class SearchPageState extends Equatable {
   List<Object> get props => [];
 }
 
-class SearchPageInitialState extends SearchPageState {}
+class SearchPageInitialState extends SearchPageState {
+}
 class SearchPageLoadingState extends SearchPageState {}
+class SearchPageNoDataState extends SearchPageState {}
 class SearchPageLoadedState extends SearchPageState {
  final List<UsedCarModel> usedCars;
 
@@ -15,14 +17,8 @@ class SearchPageLoadedState extends SearchPageState {
  @override
  List<Object> get props => [usedCars];
 }
-class SearchPageSelectedEvent extends SearchPageState{
 
-}
-class SearchPageErrorState extends SearchPageState {}
-class SearchPageResetState extends SearchPageState {
-  final List<UsedCarModel> usedCars;
-
-  const SearchPageResetState(this.usedCars);
-  @override
-  List<Object> get props => [usedCars];
+class SearchPageErrorState extends SearchPageState {
+  final String message;
+  SearchPageErrorState({required this.message});
 }

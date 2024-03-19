@@ -4,11 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:used_car_app/application/bloc/get_usedcar_bloc/get_used_car_bloc.dart';
 import 'package:used_car_app/presentation/home_page/widgets/carousel_slider_widget.dart';
 import 'package:used_car_app/presentation/home_page/widgets/fixed_carousel_slider.dart';
 import 'package:used_car_app/presentation/home_page/widgets/grid_card_widget.dart';
 import 'package:used_car_app/presentation/widgets/text_style.dart';
+import '../../application/bloc/home_page_bloc/get_used_car_bloc.dart';
 import '../details_page/detailsPage.dart';
 import '../main_page/widgets/appBar.dart';
 
@@ -20,6 +20,7 @@ class HomePage extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
         appBar: const AppBarWidget(),
         body: BlocBuilder<GetUsedCarBloc, GetUsedCarState>(
             builder: (context, state) {
@@ -40,7 +41,7 @@ class HomePage extends StatelessWidget {
               height: double.infinity,
               child: ListView(children: [
                 Container(
-                  padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                  padding: EdgeInsets.only(top: 13,left: 10, right: 10, bottom: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

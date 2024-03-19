@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
@@ -30,12 +31,14 @@ class UsedCarDetailPage extends StatelessWidget {
       create: (context) =>
           DetailsPageBloc()..add(DetailsPageLoadEvent(carmodel: carmodel)),
       child: Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.background,
           appBar: AppBar(
+            backgroundColor: Theme.of(context).colorScheme.background,
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios_new,
                 size: 18,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.secondary,
               ),
               onPressed: () => Navigator.pop(context),
             ),
@@ -49,7 +52,9 @@ class UsedCarDetailPage extends StatelessWidget {
             builder: (context, state) {
               if (state is DetailsPageLoading) {
                 return Center(
-                  child: CircularProgressIndicator(color: Colors.blue.shade900,),
+                  child: CircularProgressIndicator(
+                    color: Colors.blue.shade900,
+                  ),
                 );
               } else if (state is DetailsPageLoaded) {
                 final carmodel = state.usedcars;
@@ -89,7 +94,7 @@ class UsedCarDetailPage extends StatelessWidget {
                       height: double.infinity,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.primary,
                           borderRadius: const BorderRadius.only(
                               topRight: Radius.circular(30),
                               topLeft: Radius.circular(30))),
@@ -133,8 +138,9 @@ class UsedCarDetailPage extends StatelessWidget {
                                       Text(detailsList[index],
                                           style: TextStyle(
                                               fontSize: 15,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.black45)),
+                                              fontWeight: FontWeight.w400,
+                                              // color: Theme.of(context).colorScheme.inversePrimary
+                                          )),
                                       Text(
                                         getDetailsBasedOnIndex(index),
                                         style: const TextStyle(

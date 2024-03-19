@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class settingsRowWidget extends StatelessWidget {
@@ -5,9 +6,10 @@ class settingsRowWidget extends StatelessWidget {
   final String mainText;
   final String subText;
   final IconData icon;
+  final Widget? flagicon;
 
   const settingsRowWidget({
-    super.key, required this.mainText, this.subText = "", required this.icon,
+    super.key, required this.mainText, this.subText = "", required this.icon, this.flagicon,
   });
 
   @override
@@ -22,6 +24,8 @@ class settingsRowWidget extends StatelessWidget {
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
+              flagicon ?? Container(),
+              SizedBox(width: 5,),
               Text(subText,style: TextStyle(fontSize: 15,) ,
               ),
               Icon(Icons.keyboard_arrow_right_sharp)

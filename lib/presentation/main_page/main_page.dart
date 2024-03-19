@@ -15,6 +15,7 @@ class MainPage extends StatelessWidget {
     final _pages = [HomePage(), SearchPage(), FavouritePage(), SettingsPage()];
 
     return Scaffold(
+
       body: ValueListenableBuilder(
           valueListenable: indexChangeNotifier,
           builder: (context, newValue, child) {

@@ -16,6 +16,15 @@ class FirebaseRepo {
       rethrow;
     }
   }
+  Future<List<UsedCarModel>> getAllCars() async {
+    try {
+      QuerySnapshot querySnapshot = await usedCarCollection.get();
+      return querySnapshot.docs.map((doc) => UsedCarModel.fromDocument(doc.data() as Map<String, dynamic>)).toList();
+    } catch (err) {
+      print("the issue is  ${err.toString()}");
+      rethrow;
+    }
+  }
 
   Future<void> toggleFavoriteStatus(UsedCarModel carmodel) async {
     try {
@@ -28,7 +37,7 @@ class FirebaseRepo {
     }
   }
 
-  Future<List<UsedCarModel>> filterUsedCars({
+  Future<List<UsedCarModel>>  filterUsedCars({
     String? brand,
     String? type,
     String? color,

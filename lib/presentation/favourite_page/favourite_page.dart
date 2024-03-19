@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:lottie/lottie.dart';
 import 'package:used_car_app/application/bloc/favourite_screen_bloc/favourite_screen_bloc.dart';
 import 'package:used_car_app/core/sizes.dart';
 import 'package:used_car_app/infrastructure/repository/firebase_repo.dart';
 import 'package:used_car_app/presentation/details_page/detailsPage.dart';
 import 'package:used_car_app/presentation/widgets/text_style.dart';
+
+import '../../core/secondary_appbar.dart';
 
 class FavouritePage extends StatelessWidget {
   const FavouritePage({super.key});
@@ -18,24 +21,8 @@ class FavouritePage extends StatelessWidget {
 
     return SafeArea(
         child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: AppText(
-                text: "My Favourites",
-                size: 22,
-              ),
-              leading: Container(
-                  width: 50,
-                  margin: EdgeInsets.all(11),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white),
-                  child: Icon(
-                    Icons.keyboard_arrow_down_sharp,
-                    color: Colors.black,
-                    size: 28,
-                  )),
-            ),
+          backgroundColor: Theme.of(context).colorScheme.background,
+            appBar: SecondaryAppBar(title: "My Favourites",),
             body: BlocBuilder<FavouriteScreenBloc, FavouriteScreenState>(
               builder: (context, state) {
                 if(state is FavouriteScreenLoadingState){
@@ -48,7 +35,15 @@ class FavouritePage extends StatelessWidget {
                   final favCars = state.carModel.where((car) => car.isFavourite).toList();
                   if (favCars.isEmpty) {
                     return Center(
-                      child: Text("No Favourite Lists"),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Lottie.asset("assets/favourite.json"),
+                          SizedBox(height: ScreenUtil.getTwentySize(context),),
+                          AppText(text: "No Favourite Car Added",size: 18,),
+
+                        ],
+                      ),
                     );
                   }
                   return Container(
@@ -89,7 +84,7 @@ class FavouritePage extends StatelessWidget {
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
                                         Container(
-                                          width: screenWidth * .37,
+                                          width: screenWidth * .38,
                                           decoration: BoxDecoration(
                                               image: DecorationImage(
                                                   fit: BoxFit.contain,
@@ -102,7 +97,7 @@ class FavouritePage extends StatelessWidget {
                                               height: 20,
                                               decoration: BoxDecoration(
                                                 color: Colors.red,
-                                                borderRadius: BorderRadius.circular(ScreenUtil.getFiveSize(context))
+                                                borderRadius: BorderRadius.circular(5)
                                               ),
                                               padding: EdgeInsets.only(left: ScreenUtil.getFiveSize(context),right: ScreenUtil.getFiveSize(context)),
                                               child: Text("SOLD",style: TextStyle(fontSize: 12,color: Colors.white,fontWeight: FontWeight.w500),),
@@ -176,3 +171,4 @@ class FavouritePage extends StatelessWidget {
             )));
   }
 }
+

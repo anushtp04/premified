@@ -9,7 +9,7 @@ class SmallButtons extends StatelessWidget {
   final VoidCallback onTapFunction;
 
   const SmallButtons({
-    super.key, required this.icon, required this.text, required this.onTapFunction,this.color
+    super.key, required this.icon, required this.text, required this.onTapFunction,this.color,
   });
 
   @override
@@ -26,7 +26,7 @@ class SmallButtons extends StatelessWidget {
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.white38),
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.white
+                color: Theme.of(context).colorScheme.primary
             ),
             child: Icon(icon,size: 20,color: color,),
           ),

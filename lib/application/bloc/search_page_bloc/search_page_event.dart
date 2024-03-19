@@ -7,9 +7,8 @@ abstract class SearchPageEvent extends Equatable {
 
 
 }
+class SearchPageInitialEvent extends SearchPageEvent{}
 
-class SearchPageLoadedEvent extends SearchPageEvent{}
-class SearchPageResetEvent extends SearchPageEvent{}
 
 class SearchPageClickedEvent extends SearchPageEvent{
   final String? brandId;

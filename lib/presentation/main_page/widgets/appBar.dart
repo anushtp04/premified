@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:used_car_app/core/sizes.dart';
 
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -8,23 +8,16 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: Theme.of(context).colorScheme.background,
       elevation: 0,
       centerTitle: true,
-      title: Text(
-        "PREMIFIED USEDCARS",
-        style: GoogleFonts.kdamThmorPro(textStyle:TextStyle(
-        fontSize: 27,
-        letterSpacing: 1,
-        fontWeight: FontWeight.bold,
-        fontStyle: FontStyle.italic
-          ),
-
-
-          )));
+      title: Image.asset( Theme.of(context).colorScheme.primary == Colors.black
+          ? "assets/premifiedwhite.png" :"assets/premified.png" ,height: 55,width: ScreenUtil.getThreeHundredSize(context),fit: BoxFit.fitWidth,)
+    );
   }
 
   @override
-
-  Size get preferredSize => Size.fromHeight(50);
+  Size get preferredSize => Size.fromHeight(55);
 }
 
