@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:used_car_app/application/bloc/details_page_bloc/details_page_bloc.dart';
 import 'package:used_car_app/application/bloc/favourite_screen_bloc/favourite_screen_bloc.dart';
+import 'package:used_car_app/application/bloc/favourite_toggle_bloc/favourite_toggle_bloc.dart';
 import 'package:used_car_app/application/bloc/search_page_bloc/search_page_bloc.dart';
 import 'package:used_car_app/core/lighmodeOrDarkmode.dart';
 import 'package:used_car_app/infrastructure/repository/firebase_repo.dart';
@@ -28,12 +30,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => GetUsedCarBloc(FirebaseRepo())..add(GetUsedCar())),
-        BlocProvider(
-          create: (context) => FavouriteScreenBloc()..add(FavouriteLoadedEvent()),
-        ),
-        BlocProvider(create: (context) => SearchPageBloc(),
-        ),
+            create: (context) =>
+                GetUsedCarBloc(FirebaseRepo())..add(GetUsedCar())),
+        BlocProvider(create: (context) =>FavouriteScreenBloc()),
+        BlocProvider(create: (context) => SearchPageBloc()),
+        BlocProvider(create: (context) => FavouriteToggleBloc()),
       ],
       child: ValueListenableBuilder(
         valueListenable: isDarkMode,

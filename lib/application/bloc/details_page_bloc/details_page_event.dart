@@ -6,13 +6,6 @@ abstract class DetailsPageEvent extends Equatable {
   List<Object> get props => [];
 
 }
-class DetailsPageLoadEvent extends DetailsPageEvent{
-  final UsedCarModel carmodel;
-  DetailsPageLoadEvent({required this.carmodel});
-
-  @override
-  List<Object> get props => [carmodel];
-}
 
 class NavigateBackEvent extends DetailsPageEvent{}
 
@@ -21,3 +14,4 @@ class ToggleFavoriteEvent extends DetailsPageEvent {
 
   ToggleFavoriteEvent({required this.carmodel});
 }
+class FetchFavoriteEvent extends DetailsPageEvent {}

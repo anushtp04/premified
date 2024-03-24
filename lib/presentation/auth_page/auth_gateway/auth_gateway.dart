@@ -13,7 +13,7 @@ class AuthGateWay extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if(snapshot.hasData){
-            return const MainPage();
+            return  MainPage();
           }
           else{
             return const SignInPage();

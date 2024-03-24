@@ -18,8 +18,7 @@ class UsedCarModel {
   String ownership;
   String type;
   String range;
-  bool sold;
-  bool isFavourite;
+  bool   sold;
 
   UsedCarModel copyWith({
     String? name,
@@ -41,7 +40,6 @@ class UsedCarModel {
     String? range,
     String? ownership,
     bool? sold,
-    bool? isFavourite,
   }) {
     return UsedCarModel(
       name: name ?? this.name,
@@ -63,7 +61,6 @@ class UsedCarModel {
       range: range ?? this.range,
       year: year ?? this.year,
       sold: sold ?? this.sold,
-      isFavourite: isFavourite ?? this.isFavourite,
     );
   }
 
@@ -89,7 +86,6 @@ class UsedCarModel {
     required this.type,
     required this.range,
     required this.sold,
-    required this.isFavourite,
   });
   Map<String, Object?> toDocument() {
     return {
@@ -112,7 +108,6 @@ class UsedCarModel {
       "type": type,
       "range": range,
       "sold": sold,
-      "isFavourite": isFavourite,
     };
   }
 
@@ -137,7 +132,6 @@ class UsedCarModel {
       type: doc["type"],
       range : doc["range"],
       sold: doc["sold"],
-      isFavourite: doc["isFavourite"],
     );
   }
 }

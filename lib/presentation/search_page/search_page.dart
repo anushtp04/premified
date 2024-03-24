@@ -6,7 +6,7 @@ import 'package:used_car_app/core/secondary_appbar.dart';
 import 'package:used_car_app/core/sizes.dart';
 import 'package:used_car_app/presentation/search_page/widgets/search_list_tile.dart';
 import 'package:used_car_app/presentation/widgets/text_style.dart';
-import '../details_page/detailsPage.dart';
+import '../details_page/details_page.dart';
 
 class SearchPage extends StatelessWidget {
   SearchPage({super.key});

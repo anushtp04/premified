@@ -20,6 +20,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final emailController = TextEditingController();
+  final nameController = TextEditingController();
   final passwordController = TextEditingController();
   final cpasswordController = TextEditingController();
   bool obscurePassword = true;
@@ -49,6 +50,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     children: [
                       MyTextField(
                         hintText: "Name",
+                        controller: nameController,
                         prefixIcon: Icon(Icons.person),
                         obscureText: false,
                         keyboardType: TextInputType.name,
@@ -133,13 +135,13 @@ class _SignUpPageState extends State<SignUpPage> {
                       MaterialButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
+                            final name = nameController.text;
                             final email = emailController.text;
                             final password = passwordController.text;
                             final cpassword = cpasswordController.text;
           
                             if(password == cpassword){
-                              FireAuthHelper()
-                                  .signUp(email: email, password: password)
+                              FireAuthHelper().signUp(email: email, password: password, name: name)
                                   .then((value) {
                                 if (value == null) {
                                   Get.to(SignInPage());

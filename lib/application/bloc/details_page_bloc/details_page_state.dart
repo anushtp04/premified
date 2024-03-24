@@ -8,12 +8,16 @@ abstract class DetailsPageState extends Equatable {
 
 class DetailsPageInitial extends DetailsPageState {}
 
-class DetailsPageLoading extends DetailsPageState {}
-class DetailsPageLoaded extends  DetailsPageState {
-  final UsedCarModel usedcars;
-
-  const DetailsPageLoaded({required this.usedcars});
+class FavouriteIconColorState extends DetailsPageState {
+  final bool isFavourite;
+  FavouriteIconColorState({required this.isFavourite});
   @override
-  List<Object> get props => [usedcars];
+  List<Object> get props => [isFavourite];
+
 }
+class FavoriteCarsLoadedState extends DetailsPageState {
+
+}
+
 class DetailsPageError extends DetailsPageState {}
+

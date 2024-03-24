@@ -10,27 +10,24 @@ part 'favourite_screen_event.dart';
 part 'favourite_screen_state.dart';
 
 class FavouriteScreenBloc extends Bloc<FavouriteScreenEvent, FavouriteScreenState> {
-
   StreamSubscription<List<UsedCarModel>>? _usedCarSubscription;
 
+
   FavouriteScreenBloc() : super(FavouriteScreenInitialState()) {
+
     on<FavouriteLoadedEvent>((event, emit) async {
 
       emit(FavouriteScreenLoadingState());
 
       try {
-        // Wait for the stream subscription to complete before proceeding
-        await FirebaseRepo().getUsedCars().listen(
-              (usedCars) {
-            emit(FavouriteScreenLoadedState(carModel: usedCars));
-          },
-        ).asFuture();
+        await FirebaseRepo().fetchFavoriteCarsList().listen((favCar) {
+          emit(FavouriteScreenLoadedState(favCars: favCar));
+        }).asFuture();
       } catch (error) {
         emit(FavouriteScreenErrorState(error.toString()));
       }
     });
   }
-
   @override
   Future<void> close() async {
     // Ensure that the stream subscription is canceled before closing the bloc

@@ -14,34 +14,30 @@ class DetailsPageBloc extends Bloc<DetailsPageEvent, DetailsPageState> {
   StreamSubscription<List<UsedCarModel>>? _usedCarSubscription;
 
   DetailsPageBloc() : super(DetailsPageInitial()) {
-    on<DetailsPageLoadEvent>((event, emit) async {
-      emit(DetailsPageLoading());
-      try {
-        // Wait for the stream subscription to complete before proceeding
-        await FirebaseRepo().getUsedCars().listen(
-          (usedCars) {
-            final details =
-                usedCars.firstWhere((cars) => cars.id == event.carmodel.id);
-
-            emit(DetailsPageLoaded(usedcars: details));
-          },
-        ).asFuture();
-      } catch (error) {
-        emit(DetailsPageError());
-      }
-    });
     on<ToggleFavoriteEvent>((event, emit) async {
 
       try {
-        // Wait for the stream subscription to complete before proceeding
-      await FirebaseRepo().toggleFavoriteStatus(event.carmodel);
-      final updatedCarModel = event.carmodel.copyWith(isFavourite: !event.carmodel.isFavourite);
+        final isFavourite =  await FirebaseRepo().toggleFavoriteStatus(event.carmodel);
 
-      emit(DetailsPageLoaded(usedcars: updatedCarModel));
+
+        // emit(FavouriteIconColorState(isFavourite: isFavourite));
+
       } catch (error) {
         emit(DetailsPageError());
       }
     });
+    // on<FetchFavoriteEvent>((event, emit) async {
+    //
+    //   try {
+    //     final favoriteCars = await FirebaseRepo().fetchFavoriteCars();
+    //
+    //
+    //     emit(FavoriteCarsLoadedState(favoriteCars: favoriteCars));
+    //
+    //   } catch (error) {
+    //     emit(DetailsPageError());
+    //   }
+    // });
 
   }
 

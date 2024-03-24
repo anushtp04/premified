@@ -9,11 +9,11 @@ abstract class FavouriteScreenState extends Equatable {
 class FavouriteScreenInitialState extends FavouriteScreenState {}
 class FavouriteScreenLoadingState extends FavouriteScreenState {}
 class FavouriteScreenLoadedState extends FavouriteScreenState {
-  final List<UsedCarModel> carModel;
-  FavouriteScreenLoadedState({required this.carModel});
+  final List<UsedCarModel> favCars;
+  FavouriteScreenLoadedState({required this.favCars});
 
   @override
-  List<Object> get props => [carModel];
+  List<Object> get props => [favCars];
 }
 class FavouriteScreenErrorState extends FavouriteScreenState {
   final String errorMessage;

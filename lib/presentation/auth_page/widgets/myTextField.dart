@@ -39,9 +39,9 @@ class MyTextField extends StatelessWidget {
       onTap: onTap,
       textInputAction: TextInputAction.next,
       onChanged: onChanged,
+      cursorColor: Colors.blue.shade900,
 
       decoration: InputDecoration(
-
 
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,

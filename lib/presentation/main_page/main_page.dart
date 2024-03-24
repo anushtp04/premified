@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:used_car_app/presentation/favourite_page/favourite_page.dart';
 import 'package:used_car_app/presentation/home_page/home_page.dart';
@@ -8,23 +10,38 @@ import 'package:used_car_app/presentation/settings_page/settings_page.dart';
 
 
 class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+    MainPage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     final _pages = [HomePage(), SearchPage(), FavouritePage(), SettingsPage()];
 
-    return Scaffold(
+     return ValueListenableBuilder(
+       valueListenable: indexChangeNotifier,
+       builder: (context, newValue, child) {
+         return PopScope(
+           canPop: newValue == 0,
+           onPopInvoked: (didPop) {
+             if (didPop) {
+               return;
+             }
+             else{
+               indexChangeNotifier.value = 0;
+               return ;
+             }
+           },
+           child: Scaffold(
+             body: _pages[newValue],
+             extendBody: true,
+             bottomNavigationBar: BottomNavBarWidget(),
+           ),
+         );
+       },
 
-      body: ValueListenableBuilder(
-          valueListenable: indexChangeNotifier,
-          builder: (context, newValue, child) {
-            return _pages[newValue];
-          },),
-      extendBody: true,
-      bottomNavigationBar: BottomNavBarWidget(),
-    );
+     );
   }
 
 }
+
 
