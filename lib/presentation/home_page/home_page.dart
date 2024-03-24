@@ -11,7 +11,6 @@ import 'package:used_car_app/presentation/widgets/text_style.dart';
 import '../../application/bloc/home_page_bloc/get_used_car_bloc.dart';
 import '../details_page/details_page.dart';
 import '../main_page/widgets/appBar.dart';
-import '../main_page/widgets/bottom_nav_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

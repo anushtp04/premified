@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
-import 'package:used_car_app/application/bloc/favourite_screen_bloc/favourite_screen_bloc.dart';
-import 'package:used_car_app/application/bloc/favourite_toggle_bloc/favourite_toggle_bloc.dart';
 import 'package:used_car_app/application/bloc/favourite_toggle_bloc/favourite_toggle_bloc.dart';
 import 'package:used_car_app/core/sizes.dart';
 import 'package:used_car_app/domain/model/usedcar_model.dart';

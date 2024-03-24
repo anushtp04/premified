@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:used_car_app/application/bloc/details_page_bloc/details_page_bloc.dart';
 import 'package:used_car_app/application/bloc/favourite_screen_bloc/favourite_screen_bloc.dart';
 import 'package:used_car_app/application/bloc/favourite_toggle_bloc/favourite_toggle_bloc.dart';
 import 'package:used_car_app/application/bloc/search_page_bloc/search_page_bloc.dart';

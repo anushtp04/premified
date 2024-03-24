@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:used_car_app/domain/model/usedcar_model.dart';
 
 class FirebaseRepo {

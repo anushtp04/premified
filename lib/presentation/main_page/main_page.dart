@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:used_car_app/presentation/favourite_page/favourite_page.dart';
 import 'package:used_car_app/presentation/home_page/home_page.dart';

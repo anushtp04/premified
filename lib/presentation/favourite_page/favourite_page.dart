@@ -5,7 +5,6 @@ import 'package:lottie/lottie.dart';
 import 'package:used_car_app/application/bloc/favourite_screen_bloc/favourite_screen_bloc.dart';
 import 'package:used_car_app/application/bloc/favourite_toggle_bloc/favourite_toggle_bloc.dart';
 import 'package:used_car_app/core/sizes.dart';
-import 'package:used_car_app/infrastructure/repository/firebase_repo.dart';
 import 'package:used_car_app/presentation/details_page/details_page.dart';
 import 'package:used_car_app/presentation/widgets/text_style.dart';
 
