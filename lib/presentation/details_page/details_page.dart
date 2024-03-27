@@ -1,6 +1,8 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
@@ -74,6 +76,7 @@ class UsedCarDetailPage extends StatelessWidget {
                 loop: true,
                 pagination: SwiperPagination(
                   builder: DotSwiperPaginationBuilder(
+                    size: 8,
                     color: Theme.of(context).colorScheme.primary,
                     activeColor: Theme.of(context).colorScheme.secondary
                   ),
@@ -234,16 +237,30 @@ class UsedCarDetailPage extends StatelessWidget {
                                             context)
                                         .add(FavouriteTogglePressedEvent(
                                             carmodel: carmodel));
-                                    showTopSnackBar(
-                                      Overlay.of(context),
-                                      isFavourite
-                                          ? const CustomSnackBar.error(
-                                              message:
-                                                  "Removed from Favourite List")
-                                          : const CustomSnackBar.success(
-                                              message:
-                                                  "Added to Favourite List"),
+                                    isFavourite ?
+                                    Get.snackbar(
+                                        "Removed",
+                                        "Removed from the Favourite List",
+                                        backgroundColor: Colors.red,
+                                        messageText: Text("Removed from the Favourite List",style: TextStyle(fontSize: 16),),
+                                        duration: Duration(seconds: 3),
+                                        isDismissible: true,
+                                        dismissDirection: DismissDirection.horizontal,
+                                        // icon: Icon(Icons.thumb_up,color: Colors.white,),
+                                        overlayBlur: 4
+                                    ) :
+                                    Get.snackbar(
+                                        "Added",
+                                        "Added to the Favourite List",
+                                        backgroundColor: Colors.green,
+                                        messageText: const Text("Added to the Favourite List",style: TextStyle(fontSize: 16),),
+                                        duration: Duration(seconds: 3),
+                                        isDismissible: true,
+                                        dismissDirection: DismissDirection.horizontal,
+                                        // icon: Icon(Icons.thumb_up,color: Colors.white,),
+                                        overlayBlur: 4
                                     );
+
                                   },
                                 ));
                           } else {
