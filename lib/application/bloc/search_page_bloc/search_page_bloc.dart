@@ -33,5 +33,18 @@ class SearchPageBloc extends Bloc<SearchPageEvent, SearchPageState> {
         emit(SearchPageErrorState(message: error.toString()));
       }
   });
+    on<SearchButtonClickedEvent>((event, emit) async {
+      emit(SearchPageLoadingState());
+      try {
+        // Fetch filtered data based on the event parameters
+        final filteredCars = await FirebaseRepo().filterSingleCar(
+          name: event.name,
+
+        );
+        emit(SearchPageLoadedState(filteredCars));
+      } catch (error) {
+        emit(SearchPageErrorState(message: error.toString()));
+      }
+  });
 
 }}

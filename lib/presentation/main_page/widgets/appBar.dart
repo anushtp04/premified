@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:used_car_app/core/sizes.dart';
 
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -13,7 +12,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       centerTitle: true,
       title: Image.asset( Theme.of(context).colorScheme.primary == Colors.black
-          ? "assets/premifiedwhite.png" :"assets/premified.png" ,height: 55,width: ScreenUtil.getThreeHundredSize(context),fit: BoxFit.fitWidth,)
+          ? "assets/premifiedwhite.png" :"assets/premified.png" ,height: 55,width: 300,fit: BoxFit.fitWidth,)
     );
   }
 

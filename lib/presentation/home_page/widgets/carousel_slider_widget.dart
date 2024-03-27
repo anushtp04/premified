@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:used_car_app/domain/model/usedcar_model.dart';
-import '../../../core/sizes.dart';
 import '../../widgets/text_style.dart';
 
 class CarouselSilderWidget extends StatelessWidget {
@@ -31,9 +30,9 @@ class CarouselSilderWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.black),
-            margin: EdgeInsets.only(right: ScreenUtil.getHundredSize(context), top: ScreenUtil.getTwentySize(context), bottom: ScreenUtil.getTwentySize(context)),
+            margin: EdgeInsets.only(right: 100, top: 20, bottom: 20),
             padding: EdgeInsets.all(
-                ScreenUtil.getTenSize(context)),
+                10),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,21 +41,21 @@ class CarouselSilderWidget extends StatelessWidget {
                   AppText(
                     text:carlist.year,
                     color: Colors.white54,
-                    size: ScreenUtil.getThirteenSize(context),
+                    size: 13,
                   ),
                   AppText(
                     text:carlist.brand,
                     color: Colors.white,
-                    size: ScreenUtil.getThirteenSize(context),
+                    size: 13,
                   ),
                   AppText(
                     text:
                     carlist.name.replaceFirst(carlist.brand, "").trim(),
                     color: Colors.white,
-                    size: ScreenUtil.getSeventeenSize(context),
+                    size: 17,
                   ),
                   SizedBox(
-                    height: ScreenUtil.getTenSize(context),
+                    height:10,
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
@@ -65,13 +64,13 @@ class CarouselSilderWidget extends StatelessWidget {
                       AppText(
                         text: "starts at  ",
                         color: Colors.white,
-                        size:  ScreenUtil.getThirteenSize(context),
+                        size:  13,
                         fontWeight: FontWeight.normal,
                       ),
                       AppText(
                         text: "₹ ${carlist.price}",
                         color: Colors.white,
-                        size: ScreenUtil.getTwentySize(context),
+                        size: 20,
                       ),
                     ],
                   ),
@@ -84,8 +83,8 @@ class CarouselSilderWidget extends StatelessWidget {
             top: 0,
             bottom: 0,
             child: Container(
-              margin: EdgeInsets.only(top: ScreenUtil.getTenSize(context), bottom: ScreenUtil.getTenSize(context)),
-              width: ScreenUtil.getTwoHundredSize(context),
+              margin: EdgeInsets.only(top: 10, bottom: 10),
+              width: 200,
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 image: DecorationImage(

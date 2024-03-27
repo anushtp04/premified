@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:used_car_app/presentation/main_page/widgets/bottom_nav_bar.dart';
 
 import '../presentation/widgets/text_style.dart';
 
@@ -17,18 +18,21 @@ class SecondaryAppBar extends StatelessWidget implements PreferredSizeWidget {
         text: title,
         size: 22,
       ),
-      leading: Container(
-          width: 50,
-          margin: EdgeInsets.all(11),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Theme.of(context).colorScheme.primary
-          ),
-          child: Icon(
-            Icons.keyboard_arrow_down_sharp,
+      leading: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: MaterialButton(
+          padding: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          color:Theme.of(context).colorScheme.primary,
+          onPressed: () {
+            indexChangeNotifier.value = 0;
+          },
+          child: Icon(Icons.keyboard_arrow_down_sharp,
             color: Theme.of(context).colorScheme.secondary,
-            size: 28,
-          )),
+            size: 28),
+        ),
+      ),
+
     );
   }
   @override

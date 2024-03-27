@@ -1,3 +1,4 @@
+import 'package:card_swiper/card_swiper.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,7 +47,7 @@ class UsedCarDetailPage extends StatelessWidget {
               size: 18,
               color: Theme.of(context).colorScheme.secondary,
             ),
-            onPressed: () => Navigator.pop(context, "refresh"),
+            onPressed: () => Navigator.pop(context),
           ),
           title: AppText(
             text: carmodel.name,
@@ -58,31 +59,33 @@ class UsedCarDetailPage extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           child: Stack(children: [
-            CarouselSlider(
-                options: CarouselOptions(
-                    height: 250,
-                    autoPlay: true,
-                    viewportFraction: 1,
-                    enlargeCenterPage: true,
-                    enableInfiniteScroll: true,
-                    autoPlayAnimationDuration:
-                        const Duration(milliseconds: 10)),
-                items: [
-                  DetailsCarouselWidget(
-                    carmodel: carmodel,
-                    image: carmodel.front,
+            Container(
+              height: 250,
+              child: Swiper(
+                itemBuilder: (BuildContext context, int index) {
+                  var listImages = [carmodel.front,carmodel.side1,carmodel.side2,carmodel.back,carmodel.inside];
+                  return DetailsCarouselWidget(image: listImages[index],);
+                },
+                itemCount: 5,
+                itemWidth: 300,
+                itemHeight: 250,
+                viewportFraction: 1,
+                scale: 0.9,
+                autoplay: true,
+                loop: true,
+                pagination: SwiperPagination(
+                  builder: DotSwiperPaginationBuilder(
+                    color: Theme.of(context).colorScheme.primary,
+                    activeColor: Theme.of(context).colorScheme.secondary
                   ),
-                  DetailsCarouselWidget(
-                      carmodel: carmodel, image: carmodel.side1),
-                  DetailsCarouselWidget(
-                      carmodel: carmodel, image: carmodel.side2),
-                  DetailsCarouselWidget(
-                      carmodel: carmodel, image: carmodel.back),
-                  DetailsCarouselWidget(
-                    carmodel: carmodel,
-                    image: carmodel.inside,
-                  ),
-                ]),
+                  margin: EdgeInsets.only(bottom: 25 ,left: 20),
+
+                  alignment: Alignment.bottomLeft, // Change pagination alignment here
+                ),
+              ),
+            ),
+
+
             Container(
               padding: const EdgeInsets.only(
                   left: 20, right: 20, top: 10, bottom: 10),
@@ -151,21 +154,26 @@ class UsedCarDetailPage extends StatelessWidget {
                     height: 20,
                   ),
                   carmodel.sold == true
-                      ? Container(
-                          padding: const EdgeInsets.only(left: 20, right: 20),
-                          height: 36,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: const Center(
-                            child: Text(
-                              "Enqiury For Same Model",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500),
+                      ? GestureDetector(
+                    onTap: () {
+                      LaunchUtils.launchWhatsApp(context, carmodel.name);
+                    },
+                        child: Container(
+                            padding: const EdgeInsets.only(left: 20, right: 20),
+                            height: 36,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: const Center(
+                              child: Text(
+                                "Enqiury For Same Model",
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500),
+                              ),
                             ),
                           ),
-                        )
+                      )
                       : Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [

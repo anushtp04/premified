@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconly/iconly.dart';
 import 'package:used_car_app/application/bloc/favourite_toggle_bloc/favourite_toggle_bloc.dart';
-import 'package:used_car_app/core/sizes.dart';
 import 'package:used_car_app/domain/model/usedcar_model.dart';
 import 'package:used_car_app/presentation/settings_page/settings_page.dart';
 import 'package:used_car_app/presentation/widgets/text_style.dart';
@@ -35,13 +34,13 @@ class GridCardWidget extends StatelessWidget {
             return Container(
               width: double.infinity,
               padding: EdgeInsets.only(
-                  left: ScreenUtil.getNineSize(context),
-                  right: ScreenUtil.getNineSize(context),
-                  top: ScreenUtil.getFiveSize(context)),
+                  left: 9,
+                  right: 9,
+                  top: 5),
               //left 10 right 10 top 6
               decoration: BoxDecoration(
                 borderRadius:
-                BorderRadius.circular(ScreenUtil.getTenSize(context)),
+                BorderRadius.circular(10),
                 color: Theme
                     .of(context)
                     .colorScheme
@@ -51,10 +50,10 @@ class GridCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  SizedBox(height: ScreenUtil.getSeventySize(context)),
+                  SizedBox(height: 70),
                   Padding(
                     padding:
-                    EdgeInsets.only(top: ScreenUtil.getFiveSize(context)),
+                    EdgeInsets.only(top: 5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -63,16 +62,16 @@ class GridCardWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: Colors.blue,
                             borderRadius: BorderRadius.circular(
-                                ScreenUtil.getFiveSize(context)),
+                                5),
                           ),
                           padding: EdgeInsets.only(
-                              left: ScreenUtil.getFiveSize(context),
-                              right: ScreenUtil.getFiveSize(context)),
+                              left: 5,
+                              right: 5),
                           // left 7 right 7
                           child: Text(
                             usedcar.price,
                             style: TextStyle(
-                              fontSize: ScreenUtil.getTwelveSize(context), //
+                              fontSize: 12, //
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
                             ),
@@ -81,7 +80,7 @@ class GridCardWidget extends StatelessWidget {
                         Text(
                           usedcar.brand,
                           style: TextStyle(
-                            fontSize: ScreenUtil.getTwelveSize(context),
+                            fontSize:12,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -91,7 +90,7 @@ class GridCardWidget extends StatelessWidget {
                   Text(
                     usedcar.name,
                     style: TextStyle(
-                      fontSize: ScreenUtil.getFifteenSize(context),
+                      fontSize: 15,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -103,11 +102,11 @@ class GridCardWidget extends StatelessWidget {
                         Text(
                           "${usedcar.kilometers} KM",
                           style: TextStyle(
-                              fontSize: ScreenUtil.getTwelveSize(context)),
+                              fontSize: 12),
                         ),
                         AppText(
                           text: usedcar.year,
-                          size: ScreenUtil.getTwelveSize(context),
+                          size: 12,
                         )
                       ],
                     ),
@@ -119,25 +118,25 @@ class GridCardWidget extends StatelessWidget {
         ),
 
         Positioned(
-            top: ScreenUtil.getThreeSize(context),
-            right: ScreenUtil.getThreeSize(context),
+            top: 3,
+            right: 3,
             child: usedcar.sold == true
                 ? Container(
-              height: ScreenUtil.getSeventeenSize(context),
+              height: 17,
               decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius:
-                BorderRadius.circular(ScreenUtil.getFiveSize(context)),
+                BorderRadius.circular(5),
               ),
               padding: EdgeInsets.only(
-                  left: ScreenUtil.getFiveSize(context),
-                  right: ScreenUtil.getFiveSize(context)),
+                  left: 5,
+                  right: 5),
               child: Text(
                 "SOLD",
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: ScreenUtil.getTwelveSize(context)),
+                    fontSize:12),
               ),
             )
                 : BlocBuilder<FavouriteToggleBloc, FavouriteToggleState>(
@@ -163,15 +162,15 @@ class GridCardWidget extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(
-              left: ScreenUtil.getTenSize(context),
-              right: ScreenUtil.getTenSize(context)),
+              left: 10,
+              right:10),
           child: Container(
             width: double.infinity,
-            height: ScreenUtil.getNintySize(context),
+            height: 90,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(ScreenUtil.getTenSize(context)),
-                topRight: Radius.circular(ScreenUtil.getTenSize(context)),
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
               ),
               image: DecorationImage(
                 fit: BoxFit.fitWidth,

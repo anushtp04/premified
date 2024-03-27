@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:used_car_app/core/sizes.dart';
 
 import '../../widgets/text_style.dart';
 
@@ -19,7 +18,7 @@ class CustomMaterialButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: onPressed,
-      height: ScreenUtil.getSixty(context),
+      height:60,
       minWidth: double.infinity,
       color: Colors.white,
       shape: RoundedRectangleBorder(

@@ -4,7 +4,6 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:lottie/lottie.dart';
 import 'package:used_car_app/application/bloc/favourite_screen_bloc/favourite_screen_bloc.dart';
 import 'package:used_car_app/application/bloc/favourite_toggle_bloc/favourite_toggle_bloc.dart';
-import 'package:used_car_app/core/sizes.dart';
 import 'package:used_car_app/presentation/details_page/details_page.dart';
 import 'package:used_car_app/presentation/widgets/text_style.dart';
 
@@ -56,7 +55,7 @@ class FavouritePage extends StatelessWidget {
                         children: [
                           Lottie.asset("assets/favourite.json"),
                           SizedBox(
-                            height: ScreenUtil.getTwentySize(context),
+                            height: 20,
                           ),
                           AppText(
                             text: "No Favourite Car Added",
@@ -147,12 +146,8 @@ class FavouritePage extends StatelessWidget {
                                                           .circular(
                                                           5)),
                                                   padding: EdgeInsets.only(
-                                                      left: ScreenUtil
-                                                          .getFiveSize(
-                                                          context),
-                                                      right: ScreenUtil
-                                                          .getFiveSize(
-                                                          context)),
+                                                      left: 5,
+                                                      right: 5),
                                                   child: Text(
                                                     "SOLD",
                                                     style: TextStyle(

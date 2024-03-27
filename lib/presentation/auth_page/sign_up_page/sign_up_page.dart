@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:used_car_app/core/sizes.dart';
 import 'package:used_car_app/infrastructure/repository/auth_firebase_repo.dart';
 import 'package:used_car_app/presentation/Auth_page/sign_in_page/sign_in_page.dart';
 import 'package:used_car_app/presentation/Auth_page/widgets/myTextField.dart';
@@ -156,7 +155,7 @@ class _SignUpPageState extends State<SignUpPage> {
           
                           }
                         },
-                        height: ScreenUtil.getSixty(context),
+                        height: 60,
                         minWidth: double.infinity,
                         color: Colors.blue.shade900,
                         shape: RoundedRectangleBorder(
@@ -164,7 +163,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         child: AppText(
                           text: "Sign Up",
                           color: Colors.white,
-                          size: ScreenUtil.getEighteenSize(context),
+                          size: 18,
                         ),
                       ),
                       SizedBox(
@@ -183,7 +182,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   onPressed: () => Get.offAll(SignInPage()),
                                   child: AppText(
                                     text: "Sign In now",
-                                    size: ScreenUtil.getThirtySize(context),
+                                    size: 30,
                                     color: Colors.black,
                                   ))
                             ],

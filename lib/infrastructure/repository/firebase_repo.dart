@@ -105,6 +105,28 @@ class FirebaseRepo {
     }
   }
 
+  Future<List<UsedCarModel>> filterSingleCar({String? name}) async {
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('usedCar')
+          .get();
+
+      List<UsedCarModel> filteredCars = querySnapshot.docs.map((doc) {
+        Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+        return UsedCarModel.fromDocument(data);
+      }).toList();
+
+      // Perform client-side filtering to find partial matches
+      filteredCars = filteredCars.where((car) => car.name.contains(name!)).toList();
+
+      return filteredCars;
+    } catch (error) {
+      print("Error fetching filtered cars: $error");
+      throw Exception('Failed to fetch filtered used cars: $error');
+    }
+  }
+
+
   Future<List<UsedCarModel>> filterUsedCars({
     String? brand,
     String? type,

@@ -36,33 +36,36 @@ class SearchListTile extends StatelessWidget {
           });
 
           return Card(
-            child: Container(
-              width: 180,
-              child: DropdownMenu(
-                width: 180,
-                hintText: title,
-                textStyle: TextStyle(
-                  fontStyle: FontStyle.normal,
-                  fontWeight: FontWeight.w500,
-                ),
-                onSelected: (String? value) {
-                  onSelectionChanged(value ?? '');
-                },
-                dropdownMenuEntries: [
-                DropdownMenuEntry(
-                  value: "",
-                  label: title,
-                ),
-                ...uniqueItems.map<DropdownMenuEntry<String>>((String value) {
-                  return DropdownMenuEntry(
-                    value: value,
-                    label: value,
-                  );
-                }),
-
-              ]
+            child: DropdownMenu(
+              inputDecorationTheme: InputDecorationTheme(
+                filled: true,
+                fillColor: Theme.of(context).colorScheme.primary,
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: BorderSide.none),
+                
+                contentPadding: EdgeInsets.all(10),
 
               ),
+              width: 170,
+              menuStyle: MenuStyle(
+                shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))
+              ),
+              hintText: title,
+              textStyle: TextStyle(
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.w500,
+              ),
+              onSelected: (String? value) {
+                onSelectionChanged(value ?? '');
+              },
+              dropdownMenuEntries: uniqueItems.map<DropdownMenuEntry<String>>((String value) {
+                return DropdownMenuEntry(
+                  style: ButtonStyle(shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)))),
+                  value: value,
+                  label: value,
+                );
+              }).toList(),
+            
+            
             ),
           );
         }

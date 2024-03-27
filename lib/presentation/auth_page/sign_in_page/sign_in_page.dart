@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
-import 'package:used_car_app/core/sizes.dart';
 import 'package:used_car_app/presentation/Auth_page/sign_up_page/sign_up_page.dart';
 import 'package:used_car_app/presentation/Auth_page/widgets/myTextField.dart';
 import 'package:used_car_app/presentation/main_page/main_page.dart';
@@ -68,7 +67,7 @@ class _SignInPageState extends State<SignInPage> {
                       }
                   ),
                   SizedBox(
-                    height: ScreenUtil.getTwentySize(context),
+                    height: 20,
                   ),
                   MyTextField(
                       controller: passwordController,
@@ -125,12 +124,12 @@ class _SignInPageState extends State<SignInPage> {
                         });
                       }
                     },
-                    height: ScreenUtil.getSixty(context),
+                    height: 60,
                     minWidth: double.infinity,
                     color: Colors.blue.shade900,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    child: AppText(text: "Sign In",color: Colors.white,size: ScreenUtil.getEighteenSize(context),),
+                    child: AppText(text: "Sign In",color: Colors.white,size: 18,),
                   ),
                   SizedBox(height: 40,),
           
@@ -142,7 +141,7 @@ class _SignInPageState extends State<SignInPage> {
                           TextButton(
                               onPressed: () => Get.to(SignUpPage()), child: AppText(
                             text: "Sign up now",
-                            size: ScreenUtil.getThirtySize(context),
+                            size: 30,
                             color: Colors.black,
                           ))
                         ],

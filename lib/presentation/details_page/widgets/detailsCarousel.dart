@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:used_car_app/domain/model/usedcar_model.dart';
 
 
 class DetailsCarouselWidget extends StatelessWidget {
@@ -7,10 +6,9 @@ class DetailsCarouselWidget extends StatelessWidget {
 
   const DetailsCarouselWidget({
     super.key,
-    required this.carmodel, required this.image ,
+   required this.image ,
   });
 
-  final UsedCarModel carmodel;
 
   @override
   Widget build(BuildContext context) {

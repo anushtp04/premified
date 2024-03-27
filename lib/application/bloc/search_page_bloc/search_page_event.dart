@@ -21,3 +21,10 @@ class SearchPageClickedEvent extends SearchPageEvent{
   List<Object?> get props => [brandId, typeId, colorId, rangeId];
 
 }
+
+class SearchButtonClickedEvent extends SearchPageEvent{
+  final String? name;
+  const SearchButtonClickedEvent({this.name});
+  @override
+  List<Object?> get props => [name];
+}
