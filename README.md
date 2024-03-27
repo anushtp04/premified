@@ -1,16 +1,10 @@
-# used_car_app
+# premified used cars
 
-A new Flutter project.
+Build with bloc and firestore
 
-## Getting Started
+![first](https://github.com/anushtp04/premified./assets/124342551/a8e08c4b-d724-4a90-b160-6b99023f6c72)
 
-This project is a starting point for a Flutter application.
+![second](https://github.com/anushtp04/premified./assets/124342551/d4043894-9af4-43c2-a09b-c5855a32ea9d)
 
-A few resources to get you started if this is your first Flutter project:
+![third](https://github.com/anushtp04/premified./assets/124342551/0ae34171-bf86-4874-978d-396a04e06c0c)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
