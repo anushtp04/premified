@@ -9,8 +9,8 @@ import 'package:used_car_app/core/launch_utils.dart';
 import 'package:used_car_app/infrastructure/repository/auth_firebase_repo.dart';
 import 'package:used_car_app/presentation/Auth_page/sign_in_page/sign_in_page.dart';
 import 'package:used_car_app/presentation/main_page/widgets/bottom_nav_bar.dart';
-import 'package:used_car_app/presentation/settings_page/widgets/rawWidget.dart';
-import 'package:used_car_app/presentation/settings_page/widgets/smallButtons.dart';
+import 'package:used_car_app/presentation/settings_page/widgets/settings_raw_widget.dart';
+import 'package:used_car_app/presentation/settings_page/widgets/settings_smallbutton_widget.dart';
 import '../widgets/text_style.dart';
 
 ValueNotifier<bool> isDarkMode = ValueNotifier(false);
@@ -35,10 +35,10 @@ class SettingsPage extends StatelessWidget {
             children: [
               Container(
                 height: height * .27,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     color: Colors.blue.shade400,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                         bottomRight: Radius.circular(30),
                         bottomLeft: Radius.circular(30))),
                 child: Column(
@@ -60,8 +60,8 @@ class SettingsPage extends StatelessWidget {
                               context: context,
                               builder: (context) {
                                 return AlertDialog(
-                                  title: Text("Are you sure?"),
-                                  content: Text(
+                                  title: const Text("Are you sure?"),
+                                  content: const Text(
                                       "Are you sure you want to Sign out?"),
                                   actions: [
                                     ElevatedButton(
@@ -70,7 +70,7 @@ class SettingsPage extends StatelessWidget {
                                           FireAuthHelper()
                                               .signOut()
                                               .then((value) {
-                                            Get.offAll(SignInPage());
+                                            Get.offAll(const SignInPage());
                                             indexChangeNotifier.value = 0;
                                             isDarkMode.value = false;
                                           });
@@ -133,7 +133,7 @@ class SettingsPage extends StatelessWidget {
                                   Icons.mail,
                                   size: 20,
                                   color:
-                                      Theme.of(context).colorScheme.secondary,
+                                  Theme.of(context).colorScheme.secondary,
                                 ),
                                 text: "Mail",
                                 onTapFunction: () {
@@ -152,14 +152,14 @@ class SettingsPage extends StatelessWidget {
                               ),
                               SmallButtons(
                                   icon: isDarkMode.value
-                                      ? Icon(
-                                          Icons.dark_mode,
-                                          color: Colors.blue,
-                                        )
-                                      : Icon(
-                                          Icons.sunny,
-                                          color: Colors.amber,
-                                        ),
+                                      ? const Icon(
+                                    Icons.dark_mode,
+                                    color: Colors.blue,
+                                  )
+                                      : const Icon(
+                                    Icons.sunny,
+                                    color: Colors.amber,
+                                  ),
                                   text: isDarkMode.value
                                       ? " Dark Mode"
                                       : "Light Mode",
@@ -187,7 +187,7 @@ class SettingsPage extends StatelessWidget {
                     SizedBox(
                       height: height * 0.02,
                     ),
-                    settingsRowWidget(
+                    const settingsRowWidget(
                       mainText: 'Profile',
                       icon: Icons.person,
                     ),
@@ -197,18 +197,18 @@ class SettingsPage extends StatelessWidget {
                       icon: Icons.language,
                       flagicon: Flag(Flags.india),
                     ),
-                    settingsRowWidget(
+                    const settingsRowWidget(
                       mainText: 'Language',
                       subText: "English",
                       icon: Icons.message_outlined,
                     ),
-                    settingsRowWidget(
+                    const settingsRowWidget(
                         mainText: 'Preference', icon: Icons.feed_outlined),
-                    settingsRowWidget(
+                    const settingsRowWidget(
                       mainText: 'Terms & Conditions',
                       icon: Icons.shield,
                     ),
-                    settingsRowWidget(
+                    const settingsRowWidget(
                       mainText: 'About App',
                       icon: Icons.feed_sharp,
                     ),

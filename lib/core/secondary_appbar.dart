@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:used_car_app/presentation/main_page/widgets/bottom_nav_bar.dart';
 
+import '../presentation/main_page/widgets/bottom_nav_bar.dart';
 import '../presentation/widgets/text_style.dart';
 
 class SecondaryAppBar extends StatelessWidget implements PreferredSizeWidget {

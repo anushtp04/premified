@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:used_car_app/presentation/search_page/widgets/search_list_tile.dart';
+import 'package:used_car_app/presentation/search_page/widgets/search_list_widget.dart';
 
-import '../../../application/bloc/search_page_bloc/search_page_bloc.dart';
+import '../../../application/searchpage_bloc/search_page_bloc.dart';
 
 class ShowModalBottomWidget extends StatelessWidget {
-   ShowModalBottomWidget({super.key});
+  ShowModalBottomWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +14,8 @@ class ShowModalBottomWidget extends StatelessWidget {
       height: 300,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30))
+          color: Theme.of(context).colorScheme.background,
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(30),topRight: Radius.circular(30))
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +66,7 @@ class ShowModalBottomWidget extends StatelessWidget {
               style: TextStyle(color: Colors.white, fontSize: 16),
             ),
             onPressed: () {
-              context.read<SearchPageBloc>().add(SearchPageClickedEvent(
+              context.read<SearchPageBloc>().add(FilterButtonClicked(
                 brandId:
                 selectedMake.isNotEmpty ? selectedMake : null,
                 typeId:
@@ -76,6 +76,10 @@ class ShowModalBottomWidget extends StatelessWidget {
                 rangeId:
                 selectedPrice.isNotEmpty ? selectedPrice : null,
               ));
+              print(selectedMake);
+              print(selectedType);
+              print(selectedPrice);
+              print(selectedColor);
               Navigator.pop(context);
             },
           )

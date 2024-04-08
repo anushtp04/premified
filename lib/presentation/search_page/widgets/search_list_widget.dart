@@ -14,9 +14,9 @@ class SearchListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<UsedCarModel>>(
-      future: FirebaseRepo().getAllCars(),
-      builder: (context, snapshot) {
+    return StreamBuilder<List<UsedCarModel>>(
+        stream: FirebaseRepo().usedCarsList(),
+        builder: (context, snapshot) {
 
           List<UsedCarModel>? selectItems = snapshot.data;
 
@@ -41,13 +41,13 @@ class SearchListTile extends StatelessWidget {
                 filled: true,
                 fillColor: Theme.of(context).colorScheme.primary,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: BorderSide.none),
-                
+
                 contentPadding: EdgeInsets.all(10),
 
               ),
               width: 170,
               menuStyle: MenuStyle(
-                shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))
+                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))
               ),
               hintText: title,
               textStyle: TextStyle(
@@ -64,8 +64,8 @@ class SearchListTile extends StatelessWidget {
                   label: value,
                 );
               }).toList(),
-            
-            
+
+
             ),
           );
         }

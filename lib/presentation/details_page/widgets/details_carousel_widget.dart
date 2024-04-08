@@ -6,7 +6,7 @@ class DetailsCarouselWidget extends StatelessWidget {
 
   const DetailsCarouselWidget({
     super.key,
-   required this.image ,
+    required this.image ,
   });
 
 
@@ -15,9 +15,9 @@ class DetailsCarouselWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(10),
       height: 250,
-     decoration: BoxDecoration(
-       image: DecorationImage(image: NetworkImage(image),fit: BoxFit.fill)
-     ),
+      decoration: BoxDecoration(
+          image: DecorationImage(image: NetworkImage(image),fit: BoxFit.fill)
+      ),
     );
   }
 }
