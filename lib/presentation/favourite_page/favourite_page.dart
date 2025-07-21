@@ -22,11 +22,7 @@ class FavouritePage extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<FavouritePageBloc>(context).add(FetchFavCarList());
-    });
-
-
+    BlocProvider.of<FavouritePageBloc>(context).add(FetchFavCarList());
 
     return SafeArea(
         child: Scaffold(
