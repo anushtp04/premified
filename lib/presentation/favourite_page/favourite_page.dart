@@ -9,6 +9,9 @@ import 'package:used_car_app/presentation/details_page/details_page.dart';
 import 'package:used_car_app/presentation/widgets/text_style.dart';
 
 import '../../application/favourite_toggle/favourite_toggle_bloc.dart';
+import '../../application/favourite_toggle/favourite_toggle_event.dart';
+import '../../application/favouritepage_bloc/favourite_page_event.dart';
+import '../../application/favouritepage_bloc/favourite_page_state.dart';
 import '../../core/secondary_appbar.dart';
 
 class FavouritePage extends StatelessWidget {

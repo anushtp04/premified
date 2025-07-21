@@ -1,17 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
-import 'package:used_car_app/domain/model/usedcar_model.dart';
-
+import '../../domain/model/usedcar_model.dart';
 import '../../domain/failures/main_failure.dart';
 import '../../domain/i_firebase_repo.dart';
+import 'home_page_event.dart';
+import 'home_page_state.dart';
 
-part 'home_page_event.dart';
-part 'home_page_state.dart';
-part 'home_page_bloc.freezed.dart';
 
-@injectable
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   final IFirebaseRepo _firebaseRepo;
   HomePageBloc(this._firebaseRepo) : super( HomePageState.initial()) {

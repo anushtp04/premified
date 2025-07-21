@@ -1,6 +1,3 @@
-part of 'home_page_bloc.dart';
+abstract class HomePageEvent {}
 
-@freezed
-class HomePageEvent with _$HomePageEvent {
-  const factory HomePageEvent.getUsedCars() = GetUsedCars;
-}
+class GetUsedCars extends HomePageEvent {}

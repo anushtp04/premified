@@ -11,6 +11,7 @@ import 'package:used_car_app/presentation/home_page/widgets/carousel_slider_widg
 import 'package:used_car_app/presentation/home_page/widgets/fixed_carousel_slider.dart';
 import 'package:used_car_app/presentation/home_page/widgets/grid_card_widget.dart';
 import 'package:used_car_app/presentation/widgets/text_style.dart';
+import '../../application/homepage_bloc/home_page_state.dart';
 import '../details_page/details_page.dart';
 import '../main_page/widgets/appBar.dart';
 

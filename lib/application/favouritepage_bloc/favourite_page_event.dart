@@ -1,6 +1,3 @@
-part of 'favourite_page_bloc.dart';
+abstract class FavouritePageEvent {}
 
-@freezed
-class FavouritePageEvent with _$FavouritePageEvent {
-  const factory FavouritePageEvent.fetchFavCarList() = FetchFavCarList;
-}
+class FetchFavCarList extends FavouritePageEvent {}

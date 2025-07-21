@@ -2,19 +2,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import '../../domain/failures/main_failure.dart';
 import '../../domain/i_firebase_repo.dart';
 import '../../domain/model/usedcar_model.dart';
+import 'favourite_page_event.dart';
+import 'favourite_page_state.dart';
 
-part 'favourite_page_event.dart';
-
-part 'favourite_page_state.dart';
-
-part 'favourite_page_bloc.freezed.dart';
-
-@injectable
 class FavouritePageBloc extends Bloc<FavouritePageEvent, FavouritePageState> {
   final IFirebaseRepo _firebaseRepo;
   StreamSubscription<List<UsedCarModel>>? _usedCarSubscription;

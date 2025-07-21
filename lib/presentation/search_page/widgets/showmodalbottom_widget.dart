@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:used_car_app/presentation/search_page/widgets/search_list_widget.dart';
 
 import '../../../application/searchpage_bloc/search_page_bloc.dart';
+import '../../../application/searchpage_bloc/search_page_event.dart';
 
 class ShowModalBottomWidget extends StatelessWidget {
   ShowModalBottomWidget({super.key});
