@@ -1,18 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
+import 'package:used_car_app/application/searchpage_bloc/search_page_event.dart';
+import 'package:used_car_app/application/searchpage_bloc/search_page_state.dart';
 
 import '../../domain/failures/main_failure.dart';
 import '../../domain/i_firebase_repo.dart';
 import '../../domain/model/usedcar_model.dart';
 
-part 'search_page_event.dart';
-part 'search_page_state.dart';
-part 'search_page_bloc.freezed.dart';
-
-@injectable
 class SearchPageBloc extends Bloc<SearchPageEvent, SearchPageState> {
   final IFirebaseRepo _firebaseRepo;
   SearchPageBloc(this._firebaseRepo) : super( SearchPageState.initial()) {

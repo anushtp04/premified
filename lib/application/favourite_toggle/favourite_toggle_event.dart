@@ -1,8 +1,8 @@
-part of 'favourite_toggle_bloc.dart';
+import '../../domain/model/usedcar_model.dart';
 
-@freezed
-class FavouriteToggleEvent with _$FavouriteToggleEvent {
-  const factory FavouriteToggleEvent.favClickedEvent({
-    required UsedCarModel carmodel
-}) = FavouriteClickedEvent;
+abstract class FavouriteToggleEvent {}
+
+class FavouriteClickedEvent extends FavouriteToggleEvent {
+  final UsedCarModel carmodel;
+  FavouriteClickedEvent({required this.carmodel});
 }

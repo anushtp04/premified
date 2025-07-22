@@ -11,6 +11,8 @@ import 'package:used_car_app/core/secondary_appbar.dart';
 import 'package:used_car_app/presentation/search_page/widgets/search_textfield_widget.dart';
 import 'package:used_car_app/presentation/search_page/widgets/showmodalbottom_widget.dart';
 import 'package:used_car_app/presentation/widgets/text_style.dart';
+import '../../application/searchpage_bloc/search_page_event.dart';
+import '../../application/searchpage_bloc/search_page_state.dart';
 import '../details_page/details_page.dart';
 
 class SearchPage extends StatelessWidget {
@@ -22,7 +24,7 @@ class SearchPage extends StatelessWidget {
 
     WidgetsBinding.instance.addPostFrameCallback(
           (_) {
-        BlocProvider.of<SearchPageBloc>(context).add(const Initialize());
+        BlocProvider.of<SearchPageBloc>(context).add( Initialize());
       },
     );
     return Scaffold(
@@ -47,9 +49,7 @@ class SearchPage extends StatelessWidget {
                     suffixIcon: IconButton(
                         onPressed: () {
                           var searchCar = searchController.text.toUpperCase();
-                          context.read<SearchPageBloc>().add(
-                              SearchPageEvent.searchButtonClicked(
-                                  name: searchCar));
+                          context.read<SearchPageBloc>().add(SearchButtonClicked(name: searchCar));
                         },
                         icon: Icon(Icons.search)),
                   )),

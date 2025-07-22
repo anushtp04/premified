@@ -6,6 +6,9 @@ import 'package:used_car_app/application/favouritepage_bloc/favourite_page_bloc.
 import 'package:used_car_app/domain/model/usedcar_model.dart';
 import 'package:used_car_app/presentation/widgets/text_style.dart';
 
+import '../../../application/favouritepage_bloc/favourite_page_event.dart';
+import '../../../application/favouritepage_bloc/favourite_page_state.dart';
+
 class GridCardWidget extends StatelessWidget {
   const GridCardWidget({
     super.key,
@@ -137,7 +140,7 @@ class GridCardWidget extends StatelessWidget {
               builder: (context, state) {
 
                   final favoriteCars = state.usedCarModel;
-                  final isFavourite = favoriteCars.contains(usedcar);
+                  final isFavourite = favoriteCars.any((element) => element.id == usedcar.id);
                   return Icon(
                     IconlyBold.heart,
                     color: isFavourite? Colors.red : Colors.grey.shade300,

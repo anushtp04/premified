@@ -1,32 +1,91 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class UsedCarModel {
+  final String name;
+  final String id;
+  final String brand;
+  final String color;
+  final String price;
+  final String fuel;
+  final String state;
+  final String image;
+  final String back;
+  final String front;
+  final String side1;
+  final String side2;
+  final String inside;
+  final String kilometers;
+  final String ownership;
+  final String year;
+  final String type;
+  final String range;
+  final bool sold;
 
-part 'usedcar_model.freezed.dart';
-part 'usedcar_model.g.dart';
+  UsedCarModel({
+    required this.name,
+    required this.id,
+    required this.brand,
+    required this.color,
+    required this.price,
+    required this.fuel,
+    required this.state,
+    required this.image,
+    required this.back,
+    required this.front,
+    required this.side1,
+    required this.side2,
+    required this.inside,
+    required this.kilometers,
+    required this.ownership,
+    required this.year,
+    required this.type,
+    required this.range,
+    required this.sold,
+  });
 
-@freezed
-abstract class UsedCarModel with _$UsedCarModel {
-  factory UsedCarModel({
-    required String name,
-    required String id,
-    required String brand,
-    required String color,
-    required String price,
-    required String fuel,
-    required String state,
-    required String image,
-    required String back,
-    required String front,
-    required String side1,
-    required String side2,
-    required String inside,
-    required String kilometers,
-    required String ownership,
-    required String year,
-    required String type,
-    required String range,
-    required bool sold,
-  }) = _UsedCarModel;
+  factory UsedCarModel.fromJson(Map<String, dynamic> json) {
+    return UsedCarModel(
+      name: json['name'] as String,
+      id: json['id'] as String,
+      brand: json['brand'] as String,
+      color: json['color'] as String,
+      price: json['price'] as String,
+      fuel: json['fuel'] as String,
+      state: json['state'] as String,
+      image: json['image'] as String,
+      back: json['back'] as String,
+      front: json['front'] as String,
+      side1: json['side1'] as String,
+      side2: json['side2'] as String,
+      inside: json['inside'] as String,
+      kilometers: json['kilometers'] as String,
+      ownership: json['ownership'] as String,
+      year: json['year'] as String,
+      type: json['type'] as String,
+      range: json['range'] as String,
+      sold: json['sold'] as bool,
+    );
+  }
 
-  factory UsedCarModel.fromJson(Map<String, dynamic> json) =>
-      _$UsedCarModelFromJson(json);
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'id': id,
+      'brand': brand,
+      'color': color,
+      'price': price,
+      'fuel': fuel,
+      'state': state,
+      'image': image,
+      'back': back,
+      'front': front,
+      'side1': side1,
+      'side2': side2,
+      'inside': inside,
+      'kilometers': kilometers,
+      'ownership': ownership,
+      'year': year,
+      'type': type,
+      'range': range,
+      'sold': sold,
+    };
+  }
 }

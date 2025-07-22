@@ -1,0 +1,2 @@
+/Users/anushtp/StudioProjects/premified/android/app/.cxx/Debug/2p511w42/x86_64/CMakeFiles/edit_cache.dir
+/Users/anushtp/StudioProjects/premified/android/app/.cxx/Debug/2p511w42/x86_64/CMakeFiles/rebuild_cache.dir

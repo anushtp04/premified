@@ -10,6 +10,9 @@ import 'package:used_car_app/domain/model/usedcar_model.dart';
 import 'package:used_car_app/presentation/details_page/widgets/custom_button_widget.dart';
 import 'package:used_car_app/presentation/details_page/widgets/details_carousel_widget.dart';
 import '../../application/favourite_toggle/favourite_toggle_bloc.dart';
+import '../../application/favourite_toggle/favourite_toggle_event.dart';
+import '../../application/favouritepage_bloc/favourite_page_event.dart';
+import '../../application/favouritepage_bloc/favourite_page_state.dart';
 import '../widgets/text_style.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -27,16 +30,9 @@ class DetailsPage extends StatelessWidget {
     "Fuel Type",
   ];
 
-
-
   @override
   Widget build(BuildContext context) {
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<FavouritePageBloc>(context)
-          .add(FetchFavCarList());
-    });
-
+    BlocProvider.of<FavouritePageBloc>(context).add(FetchFavCarList());
 
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
@@ -229,15 +225,16 @@ class DetailsPage extends StatelessWidget {
                     : BlocBuilder<FavouritePageBloc, FavouritePageState>(
                         builder: (context, state) {
                           final favoriteCars = state.usedCarModel;
-                          bool isFavourite = favoriteCars.contains(carmodel);
+                          bool isFavourite = favoriteCars.any(
+                            (element) => element.id == carmodel.id,
+                          );
 
                           return CircleAvatar(
                               backgroundColor: Colors.blue,
                               child: IconButton(
                                 icon: Icon(Icons.favorite,
-                                    color:isFavourite
-                                        ? Colors.red
-                                        : Colors.grey
+                                    color:
+                                        isFavourite ? Colors.red : Colors.grey
                                     // Default color
                                     ),
                                 onPressed: () async {

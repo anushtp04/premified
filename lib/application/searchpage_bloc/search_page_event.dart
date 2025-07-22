@@ -1,12 +1,16 @@
-part of 'search_page_bloc.dart';
+abstract class SearchPageEvent {}
 
-@freezed
-class SearchPageEvent with _$SearchPageEvent {
-  const factory SearchPageEvent.initialize() = Initialize;
-  const factory SearchPageEvent.searchButtonClicked({String? name}) = SearchButtonClicked;
-  const factory SearchPageEvent.filterButtonClicked({
-    final String? brandId,
-    final String? typeId,
-    final String? colorId,
-    final String? rangeId,}) = FilterButtonClicked;
+class Initialize extends SearchPageEvent {}
+
+class SearchButtonClicked extends SearchPageEvent {
+  final String? name;
+  SearchButtonClicked({this.name});
+}
+
+class FilterButtonClicked extends SearchPageEvent {
+  final String? brandId;
+  final String? typeId;
+  final String? colorId;
+  final String? rangeId;
+  FilterButtonClicked({this.brandId, this.typeId, this.colorId, this.rangeId});
 }

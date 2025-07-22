@@ -10,13 +10,13 @@ import 'package:used_car_app/application/searchpage_bloc/search_page_bloc.dart';
 import 'package:used_car_app/core/lighmodeOrDarkmode.dart';
 import 'package:used_car_app/presentation/Auth_page/auth_gateway/auth_gateway.dart';
 import 'package:used_car_app/presentation/settings_page/settings_page.dart';
-import 'domain/dependency_injection/injectable.dart';
+import 'application/homepage_bloc/home_page_event.dart';
 import 'firebase_options.dart';
+import 'package:used_car_app/infrastructure/repository/firebase_repo.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await configureInjection();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   runApp(const MyApp());
@@ -29,10 +29,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) =>getIt<HomePageBloc>()..add(HomePageEvent.getUsedCars())),
-        BlocProvider(create: (context) =>getIt<FavouritePageBloc>()),
-        BlocProvider(create: (context) =>getIt<FavouriteToggleBloc>()),
-        BlocProvider(create: (context) =>getIt<SearchPageBloc>()),
+        BlocProvider(create: (context) => HomePageBloc(FirebaseRepo())..add(GetUsedCars())),
+        BlocProvider(create: (context) => FavouritePageBloc(FirebaseRepo())),
+        BlocProvider(create: (context) => FavouriteToggleBloc(FirebaseRepo())),
+        BlocProvider(create: (context) => SearchPageBloc(FirebaseRepo())),
       ],
       child: ValueListenableBuilder(
         valueListenable: isDarkMode,

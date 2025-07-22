@@ -1,14 +1,35 @@
-part of 'home_page_bloc.dart';
+import 'package:dartz/dartz.dart';
+import '../../domain/model/usedcar_model.dart';
+import '../../domain/failures/main_failure.dart';
 
-@freezed
-class HomePageState with _$HomePageState {
-  const factory HomePageState({
-    required bool isLoading,
-    required List<UsedCarModel> usedCarModel,
-    required Option<Either<MainFailure, List<UsedCarModel>>> homePageFailureOptions,
-}) = _HomePageState;
+class HomePageState {
+  final bool isLoading;
+  final List<UsedCarModel> usedCarModel;
+  final Option<Either<MainFailure, List<UsedCarModel>>> homePageFailureOptions;
 
-  factory HomePageState.initial(){
-    return const HomePageState(isLoading: false, homePageFailureOptions: None(),usedCarModel: []);
+  HomePageState({
+    required this.isLoading,
+    required this.usedCarModel,
+    required this.homePageFailureOptions,
+  });
+
+  factory HomePageState.initial() {
+    return HomePageState(
+      isLoading: false,
+      usedCarModel: [],
+      homePageFailureOptions: None(),
+    );
+  }
+
+  HomePageState copyWith({
+    bool? isLoading,
+    List<UsedCarModel>? usedCarModel,
+    Option<Either<MainFailure, List<UsedCarModel>>>? homePageFailureOptions,
+  }) {
+    return HomePageState(
+      isLoading: isLoading ?? this.isLoading,
+      usedCarModel: usedCarModel ?? this.usedCarModel,
+      homePageFailureOptions: homePageFailureOptions ?? this.homePageFailureOptions,
+    );
   }
 }

@@ -1,8 +1,9 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-part 'main_failure.freezed.dart';
+enum MainFailureType { clientFailure, serverFailure }
 
-@freezed
-class MainFailure with _$MainFailure {
-  const factory MainFailure.clientFailure() = _ClientFailure;
-  const factory MainFailure.serverFailure() = _ServerFailure;
+class MainFailure {
+  final MainFailureType type;
+  MainFailure(this.type);
+
+  factory MainFailure.clientFailure() => MainFailure(MainFailureType.clientFailure);
+  factory MainFailure.serverFailure() => MainFailure(MainFailureType.serverFailure);
 }
